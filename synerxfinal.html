@@ -316,13 +316,18 @@
 
     /* ─── STATS ─── */
     .stats-grid {
-      display: grid; grid-template-columns: repeat(4, 1fr);
-      border: 1px solid var(--border); border-radius: 20px; overflow: hidden;
-      background: var(--border); gap: 1px;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      overflow: hidden;
+      background: var(--border);
+      gap: 1px;
+      width: 100%;
     }
-    .stat-item { background: #fff; padding: 48px 32px; text-align: center; }
-    .stat-num   { font-family: var(--font-head); font-size: clamp(2.2rem, 3.5vw, 3.2rem); font-weight: 900; line-height: 1; margin-bottom: 10px; }
-    .stat-label { font-size: .82rem; color: var(--text-3); letter-spacing: .5px; line-height: 1.55; }
+    .stat-item  { background: #fff; padding: 44px 24px; text-align: center; min-width: 0; }
+    .stat-num   { font-family: var(--font-head); font-size: clamp(1.9rem, 3.5vw, 3.2rem); font-weight: 900; line-height: 1; margin-bottom: 10px; }
+    .stat-label { font-size: .78rem; color: var(--text-3); letter-spacing: .3px; line-height: 1.55; }
 
     /* ─── WHY ─── */
     .why-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: start; }
@@ -425,7 +430,7 @@
     @media (max-width: 900px) {
       .about-grid, .why-grid, .talks-inner { grid-template-columns: 1fr; gap: 36px; }
       .about-visual { max-width: 240px; margin: 0 auto; }
-      .stats-grid { grid-template-columns: repeat(2,1fr); }
+      .stats-grid { grid-template-columns: repeat(2, 1fr); border-radius: 16px; }
       .talks-inner { padding: 36px 28px; }
       .partner-wrap { padding: 48px 28px; }
       .nav-links { display: none; }
@@ -440,7 +445,13 @@
       .hero-stat + .hero-stat { border-left: none; border-top: 1px solid var(--border); }
       .hero-stats { flex-direction: column; }
       .events-grid { grid-template-columns: 1fr; }
-      .stats-grid { grid-template-columns: 1fr 1fr; }
+      .stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+        border-radius: 14px;
+      }
+      .stat-item { padding: 28px 12px; }
+      .stat-num  { font-size: 1.75rem; }
+      .stat-label { font-size: .72rem; }
     }
   </style>
 </head>
