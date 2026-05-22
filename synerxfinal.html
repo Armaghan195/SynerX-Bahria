@@ -1,0 +1,1057 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SynerX 2026 — Collide. Create. Elevate.</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700;900&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:          #ffffff;
+      --bg-alt:      #f0fdf4;
+      --bg-card:     #ffffff;
+      --border:      #e5e7f0;
+      --border-soft: #a7f3d0;
+      --purple:      #059669;
+      --purple-lt:   #d1fae5;
+      --purple-mid:  #34d399;
+      --purple-dark: #065f46;
+      --teal:        #0891b2;
+      --teal-lt:     #e0f2fe;
+      --rose:        #be185d;
+      --rose-lt:     #fce7f3;
+      --amber:       #b45309;
+      --amber-lt:    #fef3c7;
+      --green:       #065f46;
+      --green-lt:    #d1fae5;
+      --blue:        #1d4ed8;
+      --blue-lt:     #dbeafe;
+      --orange:      #c2410c;
+      --orange-lt:   #ffedd5;
+      --text:        #0f172a;
+      --text-2:      #334155;
+      --text-3:      #64748b;
+      --font-head:   'Orbitron', sans-serif;
+      --font-body:   'Space Grotesk', sans-serif;
+    }
+
+    html { scroll-behavior: smooth; }
+    body { background: var(--bg); color: var(--text); font-family: var(--font-body); font-size: 16px; line-height: 1.6; overflow-x: hidden; }
+
+    ::-webkit-scrollbar { width: 5px; }
+    ::-webkit-scrollbar-track { background: #f1f5f9; }
+    ::-webkit-scrollbar-thumb { background: var(--purple); border-radius: 4px; }
+
+    /* ─── UTILS ─── */
+    .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+    .section    { padding: 96px 0; }
+    .bg-alt     { background: var(--bg-alt); }
+
+    .section-tag {
+      display: inline-block;
+      font-family: var(--font-head);
+      font-size: 9px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--purple);
+      background: var(--purple-lt);
+      border: 1px solid var(--border-soft);
+      padding: 6px 16px;
+      border-radius: 100px;
+      margin-bottom: 20px;
+      font-weight: 600;
+    }
+    .section-title {
+      font-family: var(--font-head);
+      font-size: clamp(1.7rem, 3.8vw, 2.7rem);
+      font-weight: 700;
+      line-height: 1.15;
+      color: var(--text);
+      margin-bottom: 18px;
+    }
+    .section-title span { color: var(--purple); }
+    .section-sub  { color: var(--text-3); font-size: 1.05rem; max-width: 600px; line-height: 1.8; }
+    .text-center  { text-align: center; }
+    .mx-auto      { margin-left: auto; margin-right: auto; }
+
+    /* ─── NAV ─── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 999;
+      padding: 16px 0;
+      background: rgba(255,255,255,0);
+      transition: background .3s, box-shadow .3s;
+    }
+    nav.scrolled {
+      background: rgba(255,255,255,.95);
+      backdrop-filter: blur(16px);
+      box-shadow: 0 1px 0 var(--border);
+    }
+    .nav-inner { display: flex; align-items: center; justify-content: space-between; }
+    .nav-logo  { font-family: var(--font-head); font-size: 1.35rem; font-weight: 900; text-decoration: none; color: var(--text); letter-spacing: .5px; }
+    .nav-logo span { color: var(--purple); }
+    .nav-links { display: flex; gap: 32px; list-style: none; }
+    .nav-links a { text-decoration: none; color: var(--text-3); font-size: .875rem; font-weight: 500; transition: color .2s; }
+    .nav-links a:hover { color: var(--text); }
+    .nav-cta {
+      background: var(--purple) !important;
+      color: #fff !important;
+      padding: 9px 22px !important;
+      border-radius: 8px;
+      transition: background .2s !important;
+    }
+    .nav-cta:hover { background: var(--purple-dark) !important; }
+    .nav-burger { display: none; flex-direction: column; gap: 5px; cursor: pointer; }
+    .nav-burger span { display: block; width: 24px; height: 2px; background: var(--text); border-radius: 2px; }
+
+    /* ─── MOBILE MENU ─── */
+    .mobile-menu {
+      display: none; position: fixed; inset: 0;
+      background: rgba(255,255,255,.98); backdrop-filter: blur(20px);
+      z-index: 998; flex-direction: column; align-items: center; justify-content: center; gap: 28px;
+    }
+    .mobile-menu.open { display: flex; }
+    .mobile-menu a { font-family: var(--font-head); font-size: 1.5rem; font-weight: 700; text-decoration: none; color: var(--text); }
+    .mobile-menu a:hover { color: var(--purple); }
+    .mobile-close {
+      position: absolute; top: 24px; right: 24px;
+      background: none; border: 1px solid var(--border); color: var(--text);
+      width: 40px; height: 40px; border-radius: 8px; font-size: 1.1rem;
+      cursor: pointer; display: flex; align-items: center; justify-content: center;
+    }
+
+    /* ─── HERO ─── */
+    .hero {
+      min-height: 100vh; display: flex; align-items: center; justify-content: center;
+      text-align: center; position: relative; overflow: hidden;
+      padding: 140px 24px 100px;
+      background: linear-gradient(160deg, #f0fdf4 0%, #f0f9ff 55%, #ecfdf5 100%);
+    }
+    .hero-grid {
+      position: absolute; inset: 0; pointer-events: none;
+      background-image:
+        linear-gradient(rgba(5,150,105,.07) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(5,150,105,.07) 1px, transparent 1px);
+      background-size: 56px 56px;
+      mask-image: radial-gradient(ellipse 80% 70% at 50% 50%, black 40%, transparent 80%);
+    }
+    .hero-glow {
+      position: absolute; width: 640px; height: 640px; border-radius: 50%;
+      background: radial-gradient(circle, rgba(5,150,105,.12) 0%, transparent 70%);
+      top: 50%; left: 50%; transform: translate(-50%, -50%);
+      pointer-events: none;
+    }
+    .hero-content { position: relative; z-index: 2; max-width: 860px; }
+
+    .hero-badge {
+      display: inline-flex; align-items: center; gap: 8px;
+      font-family: var(--font-head); font-size: .72rem; letter-spacing: 2.5px; text-transform: uppercase;
+      color: var(--purple); background: var(--purple-lt);
+      border: 1px solid var(--border-soft); padding: 8px 20px; border-radius: 100px;
+      margin-bottom: 32px; font-weight: 700;
+    }
+    .badge-dot {
+      width: 7px; height: 7px; border-radius: 50%;
+      background: var(--purple); box-shadow: 0 0 8px rgba(5,150,105,.6);
+      animation: badgepulse 2s infinite;
+    }
+    @keyframes badgepulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:.5;transform:scale(1.4)} }
+
+    .hero-title {
+      font-family: var(--font-head);
+      font-size: clamp(3rem, 9vw, 7rem);
+      font-weight: 900; line-height: 1.0; letter-spacing: -1px;
+      color: var(--text); margin-bottom: 10px;
+    }
+    .hero-title .x-stroke {
+      color: transparent;
+      -webkit-text-stroke: 2.5px var(--purple);
+    }
+    .hero-tagline {
+      font-family: var(--font-head);
+      font-size: clamp(.75rem, 1.8vw, .95rem);
+      letter-spacing: 7px; color: var(--text-3); text-transform: uppercase; margin-bottom: 28px;
+    }
+    .hero-tagline .sep { color: var(--purple); margin: 0 6px; }
+    .hero-desc {
+      font-size: clamp(.95rem, 1.8vw, 1.12rem);
+      color: var(--text-3); max-width: 640px; margin: 0 auto 44px; line-height: 1.85;
+    }
+    .hero-actions { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+
+    .btn-primary {
+      display: inline-block; text-decoration: none; padding: 14px 34px;
+      background: var(--purple); color: #fff;
+      font-family: var(--font-body); font-weight: 600; font-size: .95rem; border-radius: 10px;
+      transition: background .2s, transform .2s, box-shadow .2s;
+      box-shadow: 0 4px 24px rgba(5,150,105,.3);
+    }
+    .btn-primary:hover { background: var(--purple-dark); transform: translateY(-2px); box-shadow: 0 8px 32px rgba(5,150,105,.4); }
+    .btn-outline {
+      display: inline-block; text-decoration: none; padding: 13px 34px;
+      border: 1.5px solid var(--border); color: var(--text);
+      font-family: var(--font-body); font-weight: 600; font-size: .95rem; border-radius: 10px;
+      background: #fff; transition: border-color .2s, transform .2s, box-shadow .2s;
+      box-shadow: 0 2px 8px rgba(0,0,0,.06);
+    }
+    .btn-outline:hover { border-color: var(--purple); transform: translateY(-2px); box-shadow: 0 4px 16px rgba(0,0,0,.1); }
+
+    .hero-stats {
+      display: flex; gap: 0; justify-content: center; margin-top: 68px;
+      background: #fff; border: 1px solid var(--border); border-radius: 16px;
+      box-shadow: 0 4px 24px rgba(0,0,0,.07); overflow: hidden; flex-wrap: wrap;
+    }
+    .hero-stat { padding: 28px 44px; flex: 1; min-width: 130px; }
+    .hero-stat + .hero-stat { border-left: 1px solid var(--border); }
+    .hero-stat-num {
+      font-family: var(--font-head); font-size: 2rem; font-weight: 900; color: var(--purple); line-height: 1;
+    }
+    .hero-stat-label { font-size: .75rem; color: var(--text-3); letter-spacing: 1px; text-transform: uppercase; margin-top: 6px; }
+
+    /* ─── ABOUT ─── */
+    .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
+
+    .about-visual {
+      position: relative; aspect-ratio: 1; max-width: 400px;
+    }
+    .av-ring {
+      position: absolute; inset: 0; border-radius: 50%;
+      border: 1px solid rgba(5,150,105,.2);
+      animation: spin 22s linear infinite;
+    }
+    .av-ring::before {
+      content:''; position: absolute; top: -5px; left: 50%;
+      width: 9px; height: 9px; border-radius: 50%;
+      background: var(--purple); box-shadow: 0 0 10px rgba(5,150,105,.7);
+      transform: translateX(-50%);
+    }
+    .av-ring:nth-child(2) { inset: 11%; border-color: rgba(8,145,178,.2); animation-duration: 15s; animation-direction: reverse; }
+    .av-ring:nth-child(2)::before { background: var(--teal); box-shadow: 0 0 10px rgba(8,145,178,.6); }
+    .av-ring:nth-child(3) { inset: 22%; border-color: rgba(190,24,93,.15); animation-duration: 10s; }
+    .av-ring:nth-child(3)::before { background: var(--rose); box-shadow: 0 0 10px rgba(190,24,93,.5); }
+    .av-core {
+      position: absolute; inset: 33%;
+      display: flex; align-items: center; justify-content: center;
+      background: radial-gradient(circle, var(--purple-lt), transparent 70%);
+    }
+    .av-core span {
+      font-family: var(--font-head); font-size: 2.2rem; font-weight: 900;
+      color: transparent; -webkit-text-stroke: 1.5px var(--purple);
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    .about-pillars { display: flex; flex-direction: column; gap: 14px; margin-top: 32px; }
+    .pillar-card {
+      display: flex; gap: 16px; align-items: flex-start;
+      padding: 18px 20px; border: 1px solid var(--border); border-radius: 12px;
+      background: #fff; transition: border-color .2s, box-shadow .2s, transform .2s;
+    }
+    .pillar-card:hover { border-color: var(--purple-mid); box-shadow: 0 4px 20px rgba(5,150,105,.1); transform: translateX(4px); }
+    .pillar-ico {
+      width: 38px; height: 38px; border-radius: 9px; flex-shrink: 0;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .pillar-ico svg { display: block; }
+    .pillar-card h4 { font-size: .95rem; font-weight: 600; color: var(--text); margin-bottom: 4px; }
+    .pillar-card p  { font-size: .82rem; color: var(--text-3); line-height: 1.55; }
+
+    /* ─── EVENTS ─── */
+    .events-header { text-align: center; margin-bottom: 60px; }
+    .events-grid   { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 22px; }
+
+    .ev-card {
+      background: #fff; border: 1px solid var(--border); border-radius: 16px;
+      padding: 28px; transition: transform .25s, border-color .25s, box-shadow .25s;
+    }
+    .ev-card:hover { transform: translateY(-4px); box-shadow: 0 12px 40px rgba(0,0,0,.09); }
+    .ev-card:hover { border-color: var(--c-border); }
+
+    .ev-card.tech    { --c: var(--purple);  --c-bg: var(--purple-lt); --c-border: var(--purple-mid); }
+    .ev-card.sports  { --c: var(--teal);    --c-bg: var(--teal-lt);   --c-border: #7dd3e8; }
+    .ev-card.culture { --c: var(--rose);    --c-bg: var(--rose-lt);   --c-border: #f9a8d4; }
+    .ev-card.esports { --c: var(--amber);   --c-bg: var(--amber-lt);  --c-border: #fcd34d; }
+    .ev-card.biz     { --c: var(--green);   --c-bg: var(--green-lt);  --c-border: #6ee7b7; }
+    .ev-card.mun     { --c: var(--blue);    --c-bg: var(--blue-lt);   --c-border: #93c5fd; }
+    .ev-card.auto    { --c: var(--orange);  --c-bg: var(--orange-lt); --c-border: #fdba74; }
+    .ev-card.science { --c: #4338ca;        --c-bg: #ede9fe;          --c-border: #c4b5fd; }
+    .ev-card.more    {
+      --c: var(--purple); --c-bg: var(--purple-lt); --c-border: var(--purple-mid);
+      background: linear-gradient(135deg, #f0fdf4 0%, #f0f9ff 100%);
+      border-style: dashed; border-color: var(--purple-mid);
+      display: flex; flex-direction: column; justify-content: center; align-items: center;
+      text-align: center;
+    }
+
+    .ev-ico {
+      width: 50px; height: 50px; border-radius: 13px; margin-bottom: 20px;
+      display: flex; align-items: center; justify-content: center;
+      background: var(--c-bg); flex-shrink: 0;
+    }
+    .ev-ico svg { display: block; }
+    .ev-title { font-family: var(--font-head); font-size: .98rem; font-weight: 700; color: var(--text); margin-bottom: 10px; }
+    .ev-desc  { font-size: .84rem; color: var(--text-3); line-height: 1.65; margin-bottom: 20px; }
+    .ev-tags  { display: flex; flex-wrap: wrap; gap: 7px; }
+    .ev-tag   {
+      font-size: .71rem; font-weight: 600; padding: 4px 10px; border-radius: 100px;
+      background: var(--c-bg); color: var(--c);
+      border: 1px solid color-mix(in srgb, var(--c) 20%, transparent);
+    }
+    .ev-more-title {
+      font-family: var(--font-head); font-size: 1.15rem; font-weight: 700;
+      color: var(--purple); margin-bottom: 12px; line-height: 1.3;
+    }
+    .ev-more-desc { font-size: .88rem; color: var(--text-3); line-height: 1.7; max-width: 240px; }
+    .ev-more-dots { display: flex; gap: 8px; margin: 20px 0; justify-content: center; }
+    .ev-more-dot  {
+      width: 8px; height: 8px; border-radius: 50%;
+      animation: dotpulse 1.6s ease-in-out infinite;
+    }
+    .ev-more-dot:nth-child(1) { background: var(--purple);   animation-delay: 0s; }
+    .ev-more-dot:nth-child(2) { background: var(--teal);     animation-delay: .2s; }
+    .ev-more-dot:nth-child(3) { background: var(--rose);     animation-delay: .4s; }
+    @keyframes dotpulse { 0%,80%,100%{transform:scale(1);opacity:.4} 40%{transform:scale(1.4);opacity:1} }
+
+    /* ─── STATS ─── */
+    .stats-grid {
+      display: grid; grid-template-columns: repeat(4, 1fr);
+      border: 1px solid var(--border); border-radius: 20px; overflow: hidden;
+      background: var(--border); gap: 1px;
+    }
+    .stat-item { background: #fff; padding: 48px 32px; text-align: center; }
+    .stat-num   { font-family: var(--font-head); font-size: clamp(2.2rem, 3.5vw, 3.2rem); font-weight: 900; line-height: 1; margin-bottom: 10px; }
+    .stat-label { font-size: .82rem; color: var(--text-3); letter-spacing: .5px; line-height: 1.55; }
+
+    /* ─── WHY ─── */
+    .why-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: start; }
+    .why-col-label {
+      font-family: var(--font-head); font-size: .82rem; font-weight: 700; letter-spacing: 1px;
+      text-transform: uppercase; margin-bottom: 24px; padding-bottom: 14px;
+      border-bottom: 2px solid var(--border);
+    }
+    .why-items { display: flex; flex-direction: column; gap: 20px; }
+    .why-item  { display: flex; gap: 16px; align-items: flex-start; }
+    .why-num   {
+      font-family: var(--font-head); font-size: .7rem; font-weight: 700;
+      width: 32px; height: 32px; border-radius: 8px; flex-shrink: 0;
+      display: flex; align-items: center; justify-content: center;
+      background: var(--purple-lt); color: var(--purple); border: 1px solid var(--border-soft);
+    }
+    .why-item h4 { font-size: .95rem; font-weight: 600; color: var(--text); margin-bottom: 4px; }
+    .why-item p  { font-size: .83rem; color: var(--text-3); line-height: 1.6; }
+
+    /* ─── TALKS ─── */
+    .talks-inner {
+      background: linear-gradient(135deg, var(--purple-lt) 0%, #e0f2fe 100%);
+      border: 1px solid var(--border-soft); border-radius: 24px; padding: 64px;
+      display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: start;
+    }
+    .topics-list { display: flex; flex-direction: column; gap: 12px; margin-top: 28px; }
+    .topic-row {
+      display: flex; gap: 12px; align-items: center;
+      padding: 13px 18px; background: #fff; border: 1px solid var(--border);
+      border-radius: 10px; font-size: .87rem; font-weight: 500; color: var(--text-2);
+      transition: border-color .2s, box-shadow .2s;
+    }
+    .topic-row:hover { border-color: var(--purple-mid); box-shadow: 0 2px 12px rgba(5,150,105,.1); }
+    .topic-dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
+    .talks-cards { display: flex; flex-direction: column; gap: 18px; }
+    .talks-card {
+      background: #fff; border: 1px solid var(--border); border-radius: 14px; padding: 24px;
+      transition: box-shadow .2s;
+    }
+    .talks-card:hover { box-shadow: 0 4px 20px rgba(0,0,0,.08); }
+    .talks-card.featured { border-color: var(--purple-mid); background: linear-gradient(135deg, #f0fdf4, #fff); }
+    .talks-card h4 { font-size: .98rem; font-weight: 600; color: var(--text); margin-bottom: 8px; }
+    .talks-card p  { font-size: .84rem; color: var(--text-3); line-height: 1.65; }
+
+    /* ─── PARTNER ─── */
+    .partner-wrap {
+      max-width: 780px; margin: 0 auto;
+      background: linear-gradient(135deg, var(--purple-lt), #e0f2fe);
+      border: 1px solid var(--border-soft); border-radius: 28px; padding: 72px 60px;
+      text-align: center; position: relative; overflow: hidden;
+    }
+    .partner-wrap::before {
+      content: ''; position: absolute;
+      width: 360px; height: 360px; border-radius: 50%;
+      background: radial-gradient(circle, rgba(5,150,105,.1), transparent 70%);
+      top: -100px; right: -80px; pointer-events: none;
+    }
+    .partner-wrap p { font-size: 1.05rem; color: var(--text-3); margin: 18px auto 36px; line-height: 1.8; max-width: 520px; }
+    .partner-features { display: flex; justify-content: center; gap: 32px; margin-bottom: 36px; flex-wrap: wrap; }
+    .pf { font-size: .84rem; color: var(--text-2); display: flex; align-items: center; gap: 7px; font-weight: 500; }
+    .pf-check {
+      width: 18px; height: 18px; border-radius: 50%;
+      background: var(--purple); display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+    }
+
+    /* ─── REGISTER ─── */
+    .register-form {
+      display: flex; gap: 12px; justify-content: center; flex-wrap: wrap;
+      max-width: 480px; margin: 0 auto;
+    }
+    .register-input {
+      flex: 1; min-width: 220px; padding: 13px 20px;
+      background: #fff; border: 1.5px solid var(--border); border-radius: 10px;
+      color: var(--text); font-family: var(--font-body); font-size: .95rem;
+      outline: none; transition: border-color .2s, box-shadow .2s;
+    }
+    .register-input:focus { border-color: var(--purple); box-shadow: 0 0 0 3px rgba(5,150,105,.12); }
+    .register-input::placeholder { color: var(--text-3); }
+    .form-success { margin-top: 16px; font-size: .88rem; color: var(--purple); font-weight: 600; display: none; }
+
+    /* ─── FOOTER ─── */
+    footer { border-top: 1px solid var(--border); padding: 48px 0; background: #fff; }
+    .footer-inner { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 24px; }
+    .footer-logo  { font-family: var(--font-head); font-size: 1.3rem; font-weight: 900; color: var(--text); }
+    .footer-logo span { color: var(--purple); }
+    .footer-meta  { font-size: .78rem; color: var(--text-3); margin-top: 5px; }
+    .footer-links { display: flex; gap: 28px; flex-wrap: wrap; }
+    .footer-links a { text-decoration: none; font-size: .85rem; color: var(--text-3); transition: color .2s; }
+    .footer-links a:hover { color: var(--text); }
+    .footer-socials { display: flex; gap: 10px; }
+    .social-btn {
+      width: 38px; height: 38px; border: 1px solid var(--border); border-radius: 8px;
+      display: flex; align-items: center; justify-content: center;
+      text-decoration: none; color: var(--text-3); transition: border-color .2s, color .2s, background .2s;
+    }
+    .social-btn:hover { border-color: var(--purple); color: var(--purple); background: var(--purple-lt); }
+    .footer-copy { font-size: .78rem; color: var(--text-3); margin-top: 8px; }
+
+    /* ─── RESPONSIVE ─── */
+    @media (max-width: 900px) {
+      .about-grid, .why-grid, .talks-inner { grid-template-columns: 1fr; gap: 36px; }
+      .about-visual { max-width: 240px; margin: 0 auto; }
+      .stats-grid { grid-template-columns: repeat(2,1fr); }
+      .talks-inner { padding: 36px 28px; }
+      .partner-wrap { padding: 48px 28px; }
+      .nav-links { display: none; }
+      .nav-burger { display: flex; }
+      .footer-inner { flex-direction: column; text-align: center; }
+      .footer-links { justify-content: center; }
+      .footer-socials { justify-content: center; }
+    }
+    @media (max-width: 580px) {
+      .section { padding: 64px 0; }
+      .hero-stat { padding: 20px 24px; }
+      .hero-stat + .hero-stat { border-left: none; border-top: 1px solid var(--border); }
+      .hero-stats { flex-direction: column; }
+      .events-grid { grid-template-columns: 1fr; }
+      .stats-grid { grid-template-columns: 1fr 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ═══ NAV ═══ -->
+<nav id="navbar">
+  <div class="container nav-inner">
+    <a href="#" class="nav-logo">Syner<span>X</span></a>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#events">Events</a></li>
+      <li><a href="#talks">Talks</a></li>
+      <li><a href="#participate">Why Participate</a></li>
+      <li><a href="#partner">Partner</a></li>
+      <li><a href="#register" class="nav-cta">Register</a></li>
+    </ul>
+    <div class="nav-burger" id="burger" onclick="openMenu()">
+      <span></span><span></span><span></span>
+    </div>
+  </div>
+</nav>
+
+<div class="mobile-menu" id="mobileMenu">
+  <button class="mobile-close" onclick="closeMenu()">&#x2715;</button>
+  <a href="#about"       onclick="closeMenu()">About</a>
+  <a href="#events"      onclick="closeMenu()">Events</a>
+  <a href="#talks"       onclick="closeMenu()">Talks</a>
+  <a href="#participate" onclick="closeMenu()">Why Participate</a>
+  <a href="#partner"     onclick="closeMenu()">Partner</a>
+  <a href="#register"    onclick="closeMenu()">Register</a>
+</div>
+
+<!-- ═══ HERO ═══ -->
+<section class="hero" id="home">
+  <div class="hero-grid"></div>
+  <div class="hero-glow"></div>
+  <div class="hero-content">
+    <div class="hero-badge">
+      <div class="badge-dot"></div>
+      Bahria University &nbsp;·&nbsp; 2026
+    </div>
+    <h1 class="hero-title">Syner<span class="x-stroke">X</span><br>2026</h1>
+    <p class="hero-tagline">Collide<span class="sep">·</span>Create<span class="sep">·</span>Elevate</p>
+    <p class="hero-desc">
+      Bahria University's premier student-centric flagship event, A dynamic four-day convergence of innovation, competition, and creative mastery designed for the next generation of leaders.
+    </p>
+    <div class="hero-actions">
+      <a href="#register" class="btn-primary">Register Now</a>
+      <a href="#events"   class="btn-outline">Explore Events</a>
+    </div>
+    <div class="hero-stats">
+      <div class="hero-stat">
+        <div class="hero-stat-num">10K+</div>
+        <div class="hero-stat-label">Student Network</div>
+      </div>
+      <div class="hero-stat">
+        <div class="hero-stat-num">4</div>
+        <div class="hero-stat-label">Days of Events</div>
+      </div>
+      <div class="hero-stat">
+        <div class="hero-stat-num">20+</div>
+        <div class="hero-stat-label">Competitions</div>
+      </div>
+      <div class="hero-stat">
+        <div class="hero-stat-num">5K+</div>
+        <div class="hero-stat-label">Expected Attendees</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ ABOUT ═══ -->
+<section class="section bg-alt" id="about">
+  <div class="container">
+    <div class="about-grid">
+      <div class="about-visual">
+        <div class="av-ring"></div>
+        <div class="av-ring"></div>
+        <div class="av-ring"></div>
+        <div class="av-core"><span>SX</span></div>
+      </div>
+      <div>
+        <span class="section-tag">About SynerX</span>
+        <h2 class="section-title">Where Academia<br>Meets <span>Industry</span></h2>
+        <p class="section-sub">
+          SynerX 2026 is Bahria University's premier student-centric flagship experience positioned at the intersection of technology, entrepreneurship, athletics, and expressive arts. More than an event, it is a high-impact platform that translates classroom knowledge into industry-aligned execution.
+        </p>
+        <div class="about-pillars">
+
+          <div class="pillar-card">
+            <div class="pillar-ico" style="background:var(--purple-lt);">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--purple)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/>
+              </svg>
+            </div>
+            <div>
+              <h4>Multi-Domain Synergy</h4>
+              <p>Advanced technology, competitive sports, and cultural expression coexist on a single national platform one arena, every dimension.</p>
+            </div>
+          </div>
+
+          <div class="pillar-card">
+            <div class="pillar-ico" style="background:var(--teal-lt);">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--teal)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/>
+              </svg>
+            </div>
+            <div>
+              <h4>Curated Professionalism</h4>
+              <p>Student-led, professionally governed every segment evaluated by industry experts and seasoned practitioners against real-world standards.</p>
+            </div>
+          </div>
+
+          <div class="pillar-card">
+            <div class="pillar-ico" style="background:var(--amber-lt);">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--amber)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6"/><path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18"/><path d="M4 22h16"/><path d="M10 14.66V17c0 .55-.47.98-.97 1.21C7.85 18.75 7 20.24 7 22"/><path d="M14 14.66V17c0 .55.47.98.97 1.21C16.15 18.75 17 20.24 17 22"/><path d="M18 2H6v7a6 6 0 0 0 12 0V2Z"/>
+              </svg>
+            </div>
+            <div>
+              <h4>National Legacy</h4>
+              <p>A legacy platform that attracts the top 2% of student talent from universities across Pakistan a mark of distinction that stands beyond the event.</p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ EVENTS ═══ -->
+<section class="section" id="events">
+  <div class="container">
+    <div class="events-header">
+      <span class="section-tag">Event Verticals</span>
+      <h2 class="section-title">Compete. Perform. <span>Innovate.</span></h2>
+      <p class="section-sub mx-auto" style="text-align:center;">Eight distinct arenas of competition and expression  each designed to challenge your limits and showcase your strengths on a national stage.</p>
+    </div>
+    <div class="events-grid">
+
+      <!-- TECH -->
+      <div class="ev-card tech">
+        <div class="ev-ico">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--purple)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/>
+          </svg>
+        </div>
+        <h3 class="ev-title">Innovation &amp; Tech</h3>
+        <p class="ev-desc">Push the boundaries of technology in high-pressure engineering challenges, coding marathons, and innovation sprints judged by real-world tech professionals.</p>
+        <div class="ev-tags">
+          <span class="ev-tag">Hackathon</span>
+          <span class="ev-tag">Speed Programming</span>
+          <span class="ev-tag">Robotics</span>
+          <span class="ev-tag">Innovation Lab</span>
+        </div>
+      </div>
+
+      <!-- SPORTS -->
+      <div class="ev-card sports">
+        <div class="ev-ico">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--teal)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/>
+          </svg>
+        </div>
+        <h3 class="ev-title">Sports Arena</h3>
+        <p class="ev-desc">Elite athletic competition across multiple disciplines. Represent your university, compete against the nation's best, and claim your place at the top.</p>
+        <div class="ev-tags">
+          <span class="ev-tag">Futsal</span>
+          <span class="ev-tag">Table Tennis</span>
+          <span class="ev-tag">Arm Wrestling</span>
+          <span class="ev-tag">Volleyball</span>
+        </div>
+      </div>
+
+      <!-- CULTURE -->
+      <div class="ev-card culture">
+        <div class="ev-ico">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--rose)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/>
+          </svg>
+        </div>
+        <h3 class="ev-title">Culture &amp; Arts</h3>
+        <p class="ev-desc">A celebration of creativity, heritage, and expression. From electrifying stage performances to intimate poetry nights the stage belongs to every voice.</p>
+        <div class="ev-tags">
+          <span class="ev-tag">Battle of Bands</span>
+          <span class="ev-tag">Stage Play</span>
+          <span class="ev-tag">Comedy Night</span>
+          <span class="ev-tag">Qawali Night</span>
+          <span class="ev-tag">Open Mic</span>
+        </div>
+      </div>
+
+      <!-- ESPORTS -->
+      <div class="ev-card esports">
+        <div class="ev-ico">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--amber)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="2" y="6" width="20" height="12" rx="2"/><path d="M12 12h.01"/><path d="M7 12h2"/><path d="M15 12h2"/>
+          </svg>
+        </div>
+        <h3 class="ev-title">Esports</h3>
+        <p class="ev-desc">The digital arena opens. Compete in high-stakes gaming tournaments with a live crowd, a dedicated stage, and a competitive bracket that separates the best from the rest.</p>
+        <div class="ev-tags">
+          <span class="ev-tag">Gaming Tournaments</span>
+          <span class="ev-tag">Esports Finals</span>
+          <span class="ev-tag">Live Stage</span>
+        </div>
+      </div>
+
+      <!-- BIZ -->
+      <div class="ev-card biz">
+        <div class="ev-ico">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="12" y1="20" x2="12" y2="10"/><line x1="18" y1="20" x2="18" y2="4"/><line x1="6" y1="20" x2="6" y2="16"/>
+          </svg>
+        </div>
+        <h3 class="ev-title">Entrepreneurship</h3>
+        <p class="ev-desc">Pitch your vision to a panel of investors and industry leaders. From concept to the main stage in days build, refine, and present your next big idea under real pressure.</p>
+        <div class="ev-tags">
+          <span class="ev-tag">Venture Pitch</span>
+          <span class="ev-tag">Industry Judges</span>
+          <span class="ev-tag">Live Panel</span>
+        </div>
+      </div>
+
+      <!-- MUN -->
+      <div class="ev-card mun">
+        <div class="ev-ico">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--blue)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="10"/>
+            <line x1="2" y1="12" x2="22" y2="12"/>
+            <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+          </svg>
+        </div>
+        <h3 class="ev-title">Model United Nations</h3>
+        <p class="ev-desc">A four-day immersive diplomatic simulation. Debate global issues, forge bloc alliances, draft resolutions, and sharpen the oratory skills that define tomorrow's leaders.</p>
+        <div class="ev-tags">
+          <span class="ev-tag">4-Day Conference</span>
+          <span class="ev-tag">Multiple Committees</span>
+          <span class="ev-tag">Best Delegate</span>
+        </div>
+      </div>
+
+      <!-- AUTO -->
+      <div class="ev-card auto">
+        <div class="ev-ico">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--orange)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M5 17H3a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v9a2 2 0 0 1-2 2h-2"/>
+            <circle cx="9" cy="17" r="2"/><circle cx="19" cy="17" r="2"/>
+          </svg>
+        </div>
+        <h3 class="ev-title">Auto &amp; Bike Show</h3>
+        <p class="ev-desc">An exclusive automotive showcase where machines meet culture. Custom builds, performance vehicles, and rare exhibits across two dedicated show days a first for a university event of this scale.</p>
+        <div class="ev-tags">
+          <span class="ev-tag">Auto Show</span>
+          <span class="ev-tag">Bike Show</span>
+          <span class="ev-tag">Custom Builds</span>
+        </div>
+      </div>
+
+      <!-- SCIENCE -->
+      <div class="ev-card science">
+        <div class="ev-ico">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#4338ca" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M9 3h6v11l3.5 6H5.5L9 14V3z"/><line x1="6" y1="9" x2="18" y2="9"/>
+          </svg>
+        </div>
+        <h3 class="ev-title">Expo &amp; Science Olympiad</h3>
+        <p class="ev-desc">Showcase groundbreaking student projects and scientific experiments. A platform for innovators to present original work to peers, faculty, and industry observers.</p>
+        <div class="ev-tags">
+          <span class="ev-tag">Project Expo</span>
+          <span class="ev-tag">Science Olympiad</span>
+          <span class="ev-tag">Innovation Displays</span>
+        </div>
+      </div>
+
+      <!-- MORE -->
+      <div class="ev-card more">
+        <div class="ev-more-dots">
+          <div class="ev-more-dot"></div>
+          <div class="ev-more-dot"></div>
+          <div class="ev-more-dot"></div>
+        </div>
+        <h3 class="ev-more-title">And Many More<br>Exciting Events</h3>
+        <p class="ev-more-desc">The full SynerX 2026 lineup is still being finalised. Stay tuned — more competitions, showcases, and experiences are on the way.</p>
+        <div style="margin-top:24px;">
+          <a href="#register" class="btn-outline" style="font-size:.85rem;padding:10px 24px;">Get Notified</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══ STATS ═══ -->
+<section class="section bg-alt">
+  <div class="container">
+    <div class="stats-grid">
+      <div class="stat-item">
+        <div class="stat-num" style="color:var(--purple)">10,000+</div>
+        <div class="stat-label">Student Network Across<br>Partner Universities</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num" style="color:var(--teal)">5,000+</div>
+        <div class="stat-label">Expected Attendees &amp;<br>Live Participants</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num" style="color:var(--rose)">20+</div>
+        <div class="stat-label">Competition &amp;<br>Cultural Verticals</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num" style="color:var(--amber)">4</div>
+        <div class="stat-label">Immersive Days of<br>Events &amp; Performances</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ TALKS ═══ -->
+<section class="section" id="talks">
+  <div class="container">
+    <div class="talks-inner">
+      <div>
+        <span class="section-tag">Talks &amp; Workshops</span>
+        <h2 class="section-title">Learn from the <span>Best</span> in the Industry</h2>
+        <p class="section-sub">Curated panel discussions and hands-on workshops led by industry leaders, tech innovators, and prominent voices shaping the future.</p>
+        <div class="topics-list">
+          <div class="topic-row">
+            <div class="topic-dot" style="background:var(--purple);box-shadow:0 0 6px rgba(5,150,105,.5)"></div>
+            Artificial Intelligence &amp; Emerging Technologies
+          </div>
+          <div class="topic-row">
+            <div class="topic-dot" style="background:var(--teal);box-shadow:0 0 6px rgba(8,145,178,.5)"></div>
+            Entrepreneurship &amp; Startup Ecosystems
+          </div>
+          <div class="topic-row">
+            <div class="topic-dot" style="background:var(--rose);box-shadow:0 0 6px rgba(190,24,93,.4)"></div>
+            Tech Careers &amp; Industry Pathways
+          </div>
+          <div class="topic-row">
+            <div class="topic-dot" style="background:var(--amber);box-shadow:0 0 6px rgba(180,83,9,.4)"></div>
+            Innovation, Design &amp; the Future of Work
+          </div>
+          <div class="topic-row">
+            <div class="topic-dot" style="background:var(--green);box-shadow:0 0 6px rgba(6,95,70,.4)"></div>
+            Leadership &amp; Impact in the Digital Age
+          </div>
+        </div>
+      </div>
+      <div class="talks-cards">
+        <div class="talks-card featured">
+          <h4>Panel Discussions</h4>
+          <p>Multi-expert panels bringing together C-suite executives, founders, and thought leaders for structured conversations on technology and industry trends that matter right now.</p>
+        </div>
+        <div class="talks-card">
+          <h4>Hands-On Workshops</h4>
+          <p>Practical, skill-building sessions where attendees work directly with tools and frameworks used in real industry environments guided by practitioners, not just teachers.</p>
+        </div>
+        <div class="talks-card">
+          <h4>Networking Sessions</h4>
+          <p>Structured face-time with recruiters, founders, and senior professionals actively looking for the next generation of builders and leaders.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ WHY PARTICIPATE ═══ -->
+<section class="section bg-alt" id="participate">
+  <div class="container">
+    <div class="text-center" style="margin-bottom:60px;">
+      <span class="section-tag">Why SynerX</span>
+      <h2 class="section-title">The Arena of <span>Excellence</span></h2>
+    </div>
+    <div class="why-grid">
+      <div>
+        <p class="why-col-label" style="color:var(--purple);border-color:var(--border-soft);">For Participants</p>
+        <div class="why-items">
+          <div class="why-item">
+            <div class="why-num">01</div>
+            <div>
+              <h4>National Spotlight</h4>
+              <p>Compete against the top 2% of student talent from universities across Pakistan on a single, prestigious national stage.</p>
+            </div>
+          </div>
+          <div class="why-item">
+            <div class="why-num">02</div>
+            <div>
+              <h4>Career Catalyst</h4>
+              <p>Direct access to industry titans and tech giants actively scouting for the next generation of leaders and innovators.</p>
+            </div>
+          </div>
+          <div class="why-item">
+            <div class="why-num">03</div>
+            <div>
+              <h4>Elite Recognition</h4>
+              <p>Substantial prize pools, professional certifications, and the prestige of a legacy victory that stands on your record.</p>
+            </div>
+          </div>
+          <div class="why-item">
+            <div class="why-num">04</div>
+            <div>
+              <h4>Multi-Domain Growth</h4>
+              <p>Build radical resilience by bridging technical grit with creative expression — one event, limitless dimensions of growth.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div>
+        <p class="why-col-label" style="color:var(--teal);border-color:var(--teal-lt);">For Everyone</p>
+        <div class="why-items">
+          <div class="why-item">
+            <div class="why-num" style="color:var(--teal);background:var(--teal-lt);border-color:#bae6fd;">01</div>
+            <div>
+              <h4>Unmissable Entertainment</h4>
+              <p>Grand concerts, Qawali nights, comedy shows, battle of bands, and cultural performances spanning the full four days.</p>
+            </div>
+          </div>
+          <div class="why-item">
+            <div class="why-num" style="color:var(--teal);background:var(--teal-lt);border-color:#bae6fd;">02</div>
+            <div>
+              <h4>Exclusive Auto Showcase</h4>
+              <p>A curated automotive expo featuring custom builds, rare vehicles, and performance machines, A first of its kind at a university event.</p>
+            </div>
+          </div>
+          <div class="why-item">
+            <div class="why-num" style="color:var(--teal);background:var(--teal-lt);border-color:#bae6fd;">03</div>
+            <div>
+              <h4>Industry Access</h4>
+              <p>Talks, workshops, and informal interactions with professionals from tech, finance, media, and creative industries.</p>
+            </div>
+          </div>
+          <div class="why-item">
+            <div class="why-num" style="color:var(--teal);background:var(--teal-lt);border-color:#bae6fd;">04</div>
+            <div>
+              <h4>Open to All</h4>
+              <p>Open to students, young professionals, and the general public built to create a shared experience around talent, culture, and community.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ PARTNER ═══ -->
+<section class="section" id="partner">
+  <div class="container">
+    <div class="partner-wrap">
+      <span class="section-tag">Partnership &amp; Collaboration</span>
+      <h2 class="section-title">Be Part of Something <span>Bigger</span></h2>
+      <p>SynerX 2026 offers brands a rare opportunity to connect directly with 10,000+ high-intent Gen Z students and young professionals across technology, business, and creative domains at Pakistan's most ambitious university event of the year.</p>
+      <div class="partner-features">
+        <span class="pf">
+          <span class="pf-check">
+            <svg width="10" height="10" viewBox="0 0 12 12" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="2 6 5 9 10 3"/></svg>
+          </span>
+          Brand Visibility
+        </span>
+        <span class="pf">
+          <span class="pf-check">
+            <svg width="10" height="10" viewBox="0 0 12 12" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="2 6 5 9 10 3"/></svg>
+          </span>
+          On-Ground Activation
+        </span>
+        <span class="pf">
+          <span class="pf-check">
+            <svg width="10" height="10" viewBox="0 0 12 12" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="2 6 5 9 10 3"/></svg>
+          </span>
+          Digital Reach
+        </span>
+        <span class="pf">
+          <span class="pf-check">
+            <svg width="10" height="10" viewBox="0 0 12 12" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="2 6 5 9 10 3"/></svg>
+          </span>
+          Talent Pipeline
+        </span>
+        <span class="pf">
+          <span class="pf-check">
+            <svg width="10" height="10" viewBox="0 0 12 12" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="2 6 5 9 10 3"/></svg>
+          </span>
+          Stage Presence
+        </span>
+      </div>
+      <a href="mailto:synerx.bseas@bahria.edu.pk" class="btn-primary">Get in Touch</a>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ REGISTER ═══ -->
+<section class="section bg-alt" id="register">
+  <div class="container text-center">
+    <span class="section-tag">Registration</span>
+    <h2 class="section-title mx-auto">Secure Your <span>Spot</span></h2>
+    <p class="section-sub mx-auto" style="text-align:center;margin-bottom:40px;">
+      Registration opens soon. Drop your email to be the first to know when doors open and get early access to competition brackets, schedule, and speaker announcements.
+    </p>
+    <form id="notifyForm" onsubmit="handleSubmit(event)" class="register-form">
+      <input
+        type="email"
+        name="email"
+        placeholder="Enter your email"
+        required
+        class="register-input"
+      />
+      <button type="submit" id="submitBtn" class="btn-primary" style="border:none;cursor:pointer;white-space:nowrap;">Notify Me</button>
+    </form>
+    <p id="formMsg" class="form-success">You're on the list! We'll be in touch soon.</p>
+    <p id="formErr" style="margin-top:16px;font-size:.88rem;color:var(--rose);font-weight:600;display:none;">Something went wrong. Please try again or email us directly.</p>
+  </div>
+</section>
+
+<!-- ═══ FOOTER ═══ -->
+<footer>
+  <div class="container">
+    <div class="footer-inner">
+      <div>
+        <div class="footer-logo">Syner<span>X</span> 2026</div>
+        <div class="footer-meta">Collide &nbsp;·&nbsp; Create &nbsp;·&nbsp; Elevate</div>
+        <div class="footer-meta" style="margin-top:4px;">Bahria University, Islamabad</div>
+      </div>
+      <div class="footer-links">
+        <a href="#about">About</a>
+        <a href="#events">Events</a>
+        <a href="#talks">Talks</a>
+        <a href="#participate">Why Participate</a>
+        <a href="#partner">Partner</a>
+      </div>
+      <div>
+        <div class="footer-socials">
+          <a href="https://www.instagram.com/synerx.bseas" target="_blank" rel="noopener" class="social-btn" title="Instagram">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+              <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
+              <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>
+            </svg>
+          </a>
+          <a href="#" class="social-btn" title="LinkedIn">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/>
+              <rect x="2" y="9" width="4" height="12"/>
+              <circle cx="4" cy="4" r="2"/>
+            </svg>
+          </a>
+          <a href="#" class="social-btn" title="Facebook">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/>
+            </svg>
+          </a>
+        </div>
+        <div class="footer-copy">&#169; 2026 SynerX &nbsp;·&nbsp; Bahria University</div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const navbar = document.getElementById('navbar');
+  window.addEventListener('scroll', () => {
+    navbar.classList.toggle('scrolled', window.scrollY > 40);
+  });
+
+  function openMenu()  { document.getElementById('mobileMenu').classList.add('open'); }
+  function closeMenu() { document.getElementById('mobileMenu').classList.remove('open'); }
+
+  async function handleSubmit(e) {
+    e.preventDefault();
+    const btn = document.getElementById('submitBtn');
+    btn.textContent = 'Sending...';
+    btn.disabled = true;
+
+    const form = document.getElementById('notifyForm');
+    const data = new FormData(form);
+
+    try {
+      const res = await fetch('https://formspree.io/f/mjgzraql', {
+        method: 'POST',
+        body: data,
+        headers: { 'Accept': 'application/json' }
+      });
+
+      if (res.ok) {
+        form.style.display = 'none';
+        document.getElementById('formMsg').style.display = 'block';
+      } else {
+        throw new Error('Server error');
+      }
+    } catch {
+      btn.textContent = 'Notify Me';
+      btn.disabled = false;
+      document.getElementById('formErr').style.display = 'block';
+    }
+  }
+
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.style.opacity = '1';
+        entry.target.style.transform = 'translateY(0)';
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.ev-card, .pillar-card, .why-item, .talks-card, .stat-item').forEach(el => {
+    el.style.opacity = '0';
+    el.style.transform = 'translateY(20px)';
+    el.style.transition = 'opacity .5s ease, transform .5s ease';
+    io.observe(el);
+  });
+</script>
+
+</body>
+</html>
